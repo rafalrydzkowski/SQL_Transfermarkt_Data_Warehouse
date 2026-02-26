@@ -2,6 +2,16 @@
 
 This document defines the mandatory standards for all database objects. Strict adherence ensures a production-grade Data Warehouse environment and seamless collaboration.
 
+## Table of Contents
+1. [General Principles](#1-general-principles)
+2. [Schema Namespaces](#2-schema-namespaces)
+3. [Object Prefixes & Naming](#3-object-prefixes--naming)
+4. [Column Standards](#4-column-standards)
+5. [Constraint & Index Naming Pattern](#5-constraint--index-naming-pattern)
+6. [SQL Formatting Style](#6-sql-formatting-style)
+
+---
+
 ## 1. General Principles
 * **Case:** `snake_case` for all identifiers (tables, columns, schemas).
 * **Clarity:** Full descriptive names are mandatory. No abbreviations (e.g., use `competition_id` instead of `comp_id`).
@@ -13,6 +23,8 @@ The project implements a 3-tier Medallion Architecture:
 * `silver`: Cleaned, typed, and normalized data (3rd Normal Form).
 * `gold`: Business-ready Dimensional Model (Star Schema).
 
+
+
 ## 3. Object Prefixes & Naming
 | Object Type | Schema | Prefix | Example | Description |
 | :--- | :--- | :--- | :--- | :--- |
@@ -22,7 +34,7 @@ The project implements a 3-tier Medallion Architecture:
 | **Dimension Table**| `gold` | `dim_` | `gold.dim_clubs` | Descriptive attributes. |
 | **Standard View** | any | `vw_` | `gold.vw_top_scorers` | Virtual/Dynamic query. |
 | **Materialized View**| any | `mvw_` | `gold.mvw_market_trends`| Physically stored/cached query. |
-| **Stored Procedure**| any | `sp_` | `silver.sp_load_silver` | Operational procedure (ETL). |
+| **Stored Procedure**| any | `sp_` | `silver.sp_load_players` | Operational procedure (ETL). |
 | **Function** | any | `fn_` | `silver.fn_calculate_age` | Logic returning a value. |
 | **Temporary Table**| any | `tmp_` | `bronze.tmp_deduplicated_data` | Session/Ephemeral data. |
 | **Index** | any | `idx_` | `gold.idx_players__last_name` | Performance optimization. |
@@ -47,6 +59,8 @@ All constraints and indexes must follow the pattern: `[type_prefix]_[table_name]
 | **Foreign Key** | `fk_` | `fk_players__clubs` |
 | **Unique Constraint**| `uq_` | `uq_players__player_code` |
 | **Index** | `idx_` | `idx_players__last_name` |
+
+
 
 ## 6. SQL Formatting Style
 * **Keywords:** Always UPPERCASE (e.g., `SELECT`, `FROM`, `JOIN`).
