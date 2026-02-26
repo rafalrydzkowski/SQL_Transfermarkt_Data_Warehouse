@@ -25,7 +25,7 @@ The project implements a 3-tier Medallion Architecture:
 | **Stored Procedure**| any | `sp_` | `silver.sp_load_silver` | Operational procedure (ETL). |
 | **Function** | any | `fn_` | `silver.fn_calculate_age` | Logic returning a value. |
 | **Temporary Table**| any | `tmp_` | `bronze.tmp_deduplicated_data` | Session/Ephemeral data. |
-| **Index** | any | `idx_` | `gold.idx_players_last_name` | Performance optimization. |
+| **Index** | any | `idx_` | `gold.idx_players__last_name` | Performance optimization. |
 
 
 ## 4. Column Standards
