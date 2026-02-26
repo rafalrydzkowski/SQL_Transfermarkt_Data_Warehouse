@@ -3,36 +3,35 @@
 
 graph TD
     %% --- EXTERNAL SOURCES ---
-    subgraph SOURCES [&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;📄 EXTERNAL SOURCES &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;]
-        CSV[📄 CSV Files<br/>Transfermarkt]
-        API[🌐 External<br/>APIs]
+    subgraph SOURCES
+        CSV[📄 CSV Files - Transfermarkt]
+        API[🌐 External APIs]
     end
 
     %% --- MAIN DWH CORE ---
-    subgraph DWH [&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;🏗️ DATA WAREHOUSE CORE (PostgreSQL) &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;]
-        
-        subgraph BRONZE [🟫 BRONZE LAYER]
+    subgraph DWH
+        subgraph BRONZE
             B_T[Physical Tables]
-            B_L[Truncate & Load]
-            B_M[Raw Landing]
+            B_L[Truncate and Load]
+            B_M[Raw Data]
         end
 
-        subgraph SILVER [⬜ SILVER LAYER]
+        subgraph SILVER
             S_T[Physical Tables]
             S_L[Incremental Load]
-            S_P[Clean & Cast]
+            S_P[Cleaning and Casting]
         end
 
-        subgraph GOLD [🟨 GOLD LAYER]
-            G_T[Fact & Dim Tables]
+        subgraph GOLD
+            G_T[Fact and Dim Tables]
             G_L[Business Logic]
             G_M[Star Schema]
         end
         
-        subgraph OPS [⚙️ PIPELINE OPS]
-            O_P[Stored Procs]
-            O_Q[SQL Tests]
-            O_L[Audit Logs]
+        subgraph OPERATIONS
+            O_P[Stored Procedures]
+            O_Q[SQL Constraints]
+            O_L[Audit Logging]
         end
 
         %% Internal Data Flow
@@ -41,19 +40,19 @@ graph TD
     end
 
     %% --- CONSUMPTION LAYER ---
-    subgraph CONSUME [&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;📊 DATA CONSUMPTION &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;]
-        BI[📊 BI & Reports]
-        SQL_C[🔍 Ad-hoc SQL]
-        ML[🧠 ML Models]
+    subgraph CONSUMPTION
+        BI[📊 BI and Reporting]
+        SQL_C[🔍 Ad-hoc Queries]
+        ML[🧠 Machine Learning]
     end
 
     %% --- GLOBAL CONNECTIONS ---
     SOURCES --> BRONZE
-    GOLD --> CONSUME
+    GOLD --> CONSUMPTION
 
     %% --- STYLING ---
     style BRONZE fill:#E9E0D6,stroke:#8A7E72,stroke-width:2px
     style SILVER fill:#f1f2f6,stroke:#ced4da,stroke-width:2px
     style GOLD fill:#FFF9E5,stroke:#F1C40F,stroke-width:2px
-    style OPS fill:#e8f4fd,stroke:#3498db,stroke-width:2px
+    style OPERATIONS fill:#e8f4fd,stroke:#3498db,stroke-width:2px
     style DWH fill:#ffffff,stroke:#333,stroke-width:1px
