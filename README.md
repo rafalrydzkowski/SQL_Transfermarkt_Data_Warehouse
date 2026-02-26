@@ -18,7 +18,7 @@ The system follows the **Medallion Architecture** pattern, implemented within a 
 
 #### 🥉 Bronze (Raw / Landing Zone)
 
-* **Purpose:** Direct ingestion of raw Transfermarkt datasets (CSV/JSON).
+* **Purpose:** Direct ingestion of raw Transfermarkt datasets (CSV)
 
 * **Strategy:** "Load-first, transform-later." Tables use flexible schema (primarily `VARCHAR`) to ensure 100% ingestion success and prevent data loss during the initial load.
 
