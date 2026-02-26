@@ -38,9 +38,18 @@ The project implements a 3-tier Medallion Architecture:
     * `dwh_updated_at`: Timestamp of the last update.
     * `dwh_source_file`: Name of the source file for lineage tracking.
 
-## 5. Constraints & Indexes
-Format: `[type_prefix]_[table_name]__[column_name(s)]`
-* **PK:** `pk_players`
-* **FK:** `fk_players__clubs`
-* **Unique:** `uq_players__player_code`
-* **Index:** `idx_players__last_name`
+## 5. Constraint & Index Naming Pattern
+All constraints and indexes must follow the pattern: `[type_prefix]_[table_name]__[column_name]`
+
+| Type | Prefix | Example |
+| :--- | :--- | :--- |
+| **Primary Key** | `pk_` | `pk_players` |
+| **Foreign Key** | `fk_` | `fk_players__clubs` |
+| **Unique Constraint**| `uq_` | `uq_players__player_code` |
+| **Index** | `idx_` | `idx_players__last_name` |
+
+## 6. SQL Formatting Style
+* **Keywords:** Always UPPERCASE (e.g., `SELECT`, `FROM`, `JOIN`).
+* **Indentation:** 4 spaces.
+* **Joins:** Always use explicit `JOIN` syntax.
+* **Aliases:** Always use the `AS` keyword for columns and tables.
