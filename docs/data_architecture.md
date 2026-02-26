@@ -1,3 +1,4 @@
+```mermaid
 %%{init: {'theme': 'base', 'themeVariables': { 'primaryColor': '#ffffff', 'primaryTextColor': '#333', 'lineColor': '#cccccc', 'fontSize': '16px', 'fontFamily': 'Inter, sans-serif'}}}%%
 
 graph LR
