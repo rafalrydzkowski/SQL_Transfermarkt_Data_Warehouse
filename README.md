@@ -148,4 +148,11 @@ This project is designed to answer complex sports-business questions through adv
 * **Inflation Tracking:** Monitoring the average transfer fee growth across major European leagues over the last decade.
 * **Aging Curves:** Analyzing at what age players in specific positions (e.g., Strikers vs. Defenders) reach their peak market value.
 
+## 🌟 About Me
+I am a **Data Engineering / Data Analytics enthusiast** with a focus on building scalable, high-integrity data warehouses. I specialize in transforming raw, messy datasets into actionable business intelligence using PostgreSQL and modern architectural patterns.
 
+* **Looking for:** Junior/Mid Data Engineer or Data Analyst roles.
+* **Tech I love:** SQL (PostgreSQL/T-SQL), Data Modeling (3NF/Star Schema), Excel, PowerBI
+* **Fun Fact:** I chose the Transfermarkt dataset because I believe sports analytics is the ultimate test for handling temporal data and complex relational integrity.
+
+📫 **Let's connect:** www.linkedin.com/in/rafał-rydzkowski-319aa7252 | RafalRydzkowskiJ@gmail.com
