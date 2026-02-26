@@ -1,81 +1,74 @@
 ```mermaid
-%%{init: {'theme': 'base', 'themeVariables': { 'primaryColor': '#ffffff', 'primaryTextColor': '#333', 'lineColor': '#cccccc', 'fontSize': '16px', 'fontFamily': 'Inter, sans-serif'}}}%%
+%%{init: {'theme': 'base', 'themeVariables': { 'primaryColor': '#ffffff', 'primaryTextColor': '#2c3e50', 'lineColor': '#7f8c8d', 'fontSize': '16px', 'fontFamily': 'Roboto, Inter, sans-serif', 'clusterBkg': '#f8f9fa', 'clusterBorder': '#bdc3c7'}}}%%
 
-graph LR
-    %% Horizontal Sections
+graph TD
+    %% --- SEKCJA ŹRÓDEŁ ---
     subgraph SOURCES["📄 SOURCES (External)"]
-        direction TB
-        CSV[📄 CSV Files]
-        API[🌐 REST API]
-        SQL[💾 SQL DBs]
-    end
-
-    %% Data Warehouse Central Block
-    subgraph DWH["🏗️ DATA WAREHOUSE (PostgreSQL)"]
         direction LR
-        
-        %% Bronze Layer
-        subgraph BRONZE["🟫 BRONZE (RAW STAGING)"]
-            direction TB
-            BRONZE_T[Type: Raw Tables]
-            BRONZE_L[Load: Truncate & Load / Append]
-            BRONZE_TR[Process: Schema-on-read]
-        end
-
-        %% Silver Layer
-        subgraph SILVER["⬜ SILVER (NORMALIZED PROCESSING)"]
-            direction TB
-            SILVER_T[Type: Base Tables]
-            SILVER_L[Load: Incremental Appends]
-            SILVER_TR[Process: Cleaning, Casting, Deduplication]
-        end
-
-        %% Gold Layer
-        subgraph GOLD["🟨 GOLD (ANALYTICAL REPORTING)"]
-            direction TB
-            GOLD_T[Type: Fact & Dimension Tables]
-            GOLD_L[Load: Business Logic / Views]
-            GOLD_TR[Model: Star Schema / Data Marts]
-        end
-        
-        %% Orchestration & Monitoring vertical
-        subgraph ORCH["⚙️ ORCHESTRATION & MONITORING (e.g., dbt + Airflow)"]
-            direction TB
-            ORCH_P[Pipeline scheduling]
-            ORCH_DQ[Data quality checks]
-            ORCH_E[Error handling]
-        end
-
-        %% Define internal connections within DWH
-        BRONZE --> SILVER
-        SILVER --> GOLD
+        CSV[📄 CSV Files<br/>Transfermarkt]
+        API[🌐 External<br/>APIs]
     end
 
-    %% Consumption Section
+    %% --- GŁÓWNY BLOK DWH ---
+    subgraph DWH["🏗️ DATA WAREHOUSE (PostgreSQL)"]
+        direction TD
+        
+        %% Warstwy Medallion
+        subgraph BRONZE["🟫 BRONZE<br/>(Raw Staging)"]
+            direction TB
+            B_T[Physical Tables]
+            B_L[Truncate & Load]
+            B_M[Raw Data]
+        end
+
+        subgraph SILVER["⬜ SILVER<br/>(Normalized Processing)"]
+            direction TB
+            S_T[Physical Tables]
+            S_L[Incremental Load]
+            S_P[Cleaning & Casting]
+        end
+
+        subgraph GOLD["🟨 GOLD<br/>(Analytical Reporting)"]
+            direction TB
+            G_T[Fact & Dim Tables]
+            G_L[Business Logic]
+            G_M[Star Schema]
+        end
+        
+        %% Warstwa Operacyjna (Orkiestracja)
+        subgraph ORCH["⚙️ PIPELINE OPERATIONS"]
+            direction TB
+            O_P[Orchestration<br/>Stored Procedures]
+            O_Q[Data Quality<br/>Constraints & Tests]
+            O_L[Audit Logging<br/>dwh_ops]
+        end
+
+        %% Połączenia wewnątrz DWH
+        B_M --> S_P
+        S_P --> G_L
+    end
+
+    %% --- SEKCJA KONSUMPCJI ---
     subgraph CONSUME["📊 CONSUMPTION"]
-        direction TB
+        direction LR
         BI[📊 BI & Reporting]
-        SQL_C[🔍 Ad-hoc SQL Queries]
-        ML[🧠 Machine Learning]
+        SQL_C[🔍 Ad-hoc<br/>Queries]
+        ML[🧠 Machine<br/>Learning]
     end
 
-    %% Define global flow connections
-    SOURCES --> DWH
-    DWH --> CONSUME
+    %% --- GŁÓWNY PRZEPŁYW DANYCH ---
+    SOURCES --> BRONZE
+    GOLD --> CONSUME
 
-    %% Style definitions for the graph (to make it look minimal)
-    classDef minimal fill:#fff,stroke:#fff,stroke-width:0px,color:#333;
-    classDef dwhLayer fill:#f9f9f9,stroke:#ddd,stroke-width:1px,color:#333;
-    classDef bronze fill:#E0D6CC,stroke:#C6B7A6,stroke-width:2px,color:#333;
-    classDef silver fill:#f0f0f0,stroke:#ddd,stroke-width:2px,color:#333;
-    classDef gold fill:#FFF5E1,stroke:#EEDDBB,stroke-width:2px,color:#333;
-    classDef orch fill:#e6f3ff,stroke:#b3d7ff,stroke-width:2px,color:#333;
+    %% --- STYLOWANIE (Minimalist & Corporate) ---
+    classDef minimal fill:#fff,stroke:#fff,stroke-width:0px,color:#2c3e50;
+    classDef bronze fill:#E9E0D6,stroke:#8A7E72,stroke-width:2px,color:#2c3e50;
+    classDef silver fill:#f1f2f6,stroke:#ced4da,stroke-width:2px,color:#2c3e50;
+    classDef gold fill:#FFF9E5,stroke:#F1C40F,stroke-width:2px,color:#2c3e50;
+    classDef orch fill:#e8f4fd,stroke:#3498db,stroke-width:2px,color:#2c3e50;
 
-    %% Apply styles
-    class CSV,API,SQL minimal;
-    class BRONZE_T,BRONZE_L,BRONZE_TR,SILVER_T,SILVER_L,SILVER_TR,GOLD_T,GOLD_L,GOLD_TR minimal;
-    class BI,SQL_C,ML minimal;
-    class ORCH_P,ORCH_DQ,ORCH_E minimal;
+    %% Aplikacja stylów
+    class CSV,API,B_T,B_L,B_M,S_T,S_L,S_P,G_T,G_L,G_M,BI,SQL_C,ML,O_P,O_Q,O_L minimal;
     
     class BRONZE bronze;
     class SILVER silver;
