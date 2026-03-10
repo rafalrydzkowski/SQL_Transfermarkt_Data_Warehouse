@@ -1,0 +1,91 @@
+erDiagram
+    %% Dimensions
+    DIM_PLAYERS {
+        int player_key PK
+        int player_id NK
+        string full_name
+        date dob
+        string position
+        string foot
+        int height_in_cm
+    }
+
+    DIM_CLUBS {
+        int club_key PK
+        int club_id NK
+        string club_name
+        string stadium_name
+        int stadium_seats
+    }
+
+    DIM_COMPETITIONS {
+        int competition_key PK
+        string competition_id NK
+        string competition_name
+        string competition_type
+        boolean is_top_5_league
+    }
+
+    DIM_GAMES {
+        int game_key PK
+        int game_id NK
+        date game_date
+        string season
+        string round
+        string referee
+    }
+
+    %% Facts
+    FACT_PLAYER_STATS {
+        int appearance_id PK
+        int player_key FK
+        int game_key FK
+        int club_key FK
+        int goals
+        int assists
+        int minutes_played
+        boolean is_starter
+    }
+
+    FACT_TEAM_RESULTS {
+        int result_id PK
+        int game_key FK
+        int club_key FK
+        int opponent_club_key FK
+        int goals_for
+        int goals_against
+        int points_earned
+    }
+
+    FACT_PLAYER_VALUATIONS {
+        int valuation_id PK
+        int player_key FK
+        int date_key FK
+        numeric market_value_eur
+    }
+
+    FACT_TRANSFERS {
+        int transfer_id PK
+        int player_key FK
+        int from_club_key FK
+        int to_club_key FK
+        int game_key FK
+        numeric transfer_fee
+        numeric market_value_at_transfer
+    }
+
+    %% Relationships (Star Schema)
+    DIM_PLAYERS ||--o{ FACT_PLAYER_STATS : "plays in"
+    DIM_PLAYERS ||--o{ FACT_PLAYER_VALUATIONS : "has history"
+    DIM_PLAYERS ||--o{ FACT_TRANSFERS : "is transferred"
+
+    DIM_CLUBS ||--o{ FACT_PLAYER_STATS : "represented by"
+    DIM_CLUBS ||--o{ FACT_TEAM_RESULTS : "competes in"
+    DIM_CLUBS ||--o{ FACT_TRANSFERS : "buys/sells"
+
+    DIM_GAMES ||--o{ FACT_PLAYER_STATS : "details"
+    DIM_GAMES ||--o{ FACT_TEAM_RESULTS : "details"
+    DIM_GAMES ||--o{ FACT_TRANSFERS : "occurs during"
+
+    DIM_COMPETITIONS ||--o{ FACT_TEAM_RESULTS : "organized in"
+    DIM_COMPETITIONS ||--o{ FACT_PLAYER_STATS : "recorded in"
