@@ -1,0 +1,75 @@
+classDiagram
+    direction TB
+
+    %% Level 1: Meta-data
+    class competitions {
+        +VARCHAR competition_id
+    }
+
+    %% Level 2: Core Entities (Aligned)
+    class games {
+        +INT game_id
+        +VARCHAR competition_id
+        +INT home_club_id
+        +INT away_club_id
+    }
+    class clubs {
+        +INT club_id
+        +VARCHAR domestic_competition_id
+    }
+
+    %% Level 3: Player & Transaction Data
+    class players {
+        +INT player_id
+        +INT current_club_id
+    }
+    class transfers {
+        +INT player_id
+        +INT from_club_id
+        +INT to_club_id
+        +NUMERIC transfer_fee
+    }
+
+    %% Level 4: Performance & Valuation (Leaf Tables)
+    class appearances {
+        +VARCHAR appearance_id
+        +INT player_id
+        +INT game_id
+    }
+    class player_valuations {
+        +INT player_id
+        +NUMERIC market_value_in_eur
+    }
+    class game_events {
+        +INT game_event_id
+        +INT game_id
+        +INT player_id
+    }
+    class game_lineups {
+        +VARCHAR game_lineups_id
+        +INT game_id
+        +INT player_id
+    }
+    class club_games {
+        +INT game_id
+        +INT club_id
+    }
+
+    %% Relationships
+    competitions --|> games : competition_id
+    competitions --|> clubs : domestic_competition_id
+    
+    clubs --|> players : current_club_id
+    clubs --|> transfers : from/to_club_id
+    clubs --|> club_games : club_id
+    
+    games --|> club_games : game_id
+    games --|> appearances : game_id
+    games --|> game_events : game_id
+    games --|> game_lineups : game_id
+    
+    players --|> appearances : player_id
+    players --|> transfers : player_id
+    players --|> player_valuations : player_id
+    players --|> game_events : player_id
+    players --|> game_lineups : player_id
