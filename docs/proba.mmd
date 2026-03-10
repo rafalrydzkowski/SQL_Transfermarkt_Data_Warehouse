@@ -40,36 +40,18 @@ classDiagram
         +INT player_id
         +NUMERIC market_value_in_eur
     }
-    class game_events {
-        +INT game_event_id
-        +INT game_id
-        +INT player_id
-    }
-    class game_lineups {
-        +VARCHAR game_lineups_id
-        +INT game_id
-        +INT player_id
-    }
-    class club_games {
-        +INT game_id
-        +INT club_id
-    }
 
     %% Relationships
     competitions --|> games : competition_id
     competitions --|> clubs : domestic_competition_id
     
+    %% KLUCZOWE POŁĄCZENIE CLUBS <-> GAMES
+    clubs --|> games : home/away_club_id
+    
     clubs --|> players : current_club_id
     clubs --|> transfers : from/to_club_id
-    clubs --|> club_games : club_id
     
-    games --|> club_games : game_id
     games --|> appearances : game_id
-    games --|> game_events : game_id
-    games --|> game_lineups : game_id
-    
     players --|> appearances : player_id
     players --|> transfers : player_id
     players --|> player_valuations : player_id
-    players --|> game_events : player_id
-    players --|> game_lineups : player_id
