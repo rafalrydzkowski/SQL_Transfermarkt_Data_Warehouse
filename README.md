@@ -112,7 +112,7 @@ The raw data is ingested from 10 CSV files, forming the foundation of the Bronze
 
 
 
-> **Audit Note:** During the Silver Layer transformation, strict referential integrity is enforced. Any record in `appearances.csv` without a corresponding `player_id` in `players.csv` is flagged for data quality review.
+> **Audit Note:** The Data may contain 'Orphan' records for Players and Clubs. This is a known architectural characteristic resulting from the upstream data extraction logic between Transfermarkt and the Kaggle dataset. More about pulling up data process from Transfermarkt Website: [Transfermarkt-Scraper](https://github.com/dcaribou/transfermarkt-scraper)
 
 ## 3. Technical Stack & Logic
 
