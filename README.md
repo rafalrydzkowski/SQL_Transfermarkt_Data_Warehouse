@@ -20,7 +20,7 @@ The system follows the **Medallion Architecture** pattern, implemented within a 
 
 * **Purpose:** Direct ingestion of raw Transfermarkt datasets (CSV)
 
-* **Strategy:** "Load-first, transform-later." Tables use flexible schema (primarily `VARCHAR`) to ensure 100% ingestion success and prevent data loss during the initial load.
+* **Strategy:** "Load-first, transform-later." Tables use flexible schema (primarily `TEXT`) to ensure 100% ingestion success and prevent data loss during the initial load.
 
 * **Integrity:** No Foreign Keys or complex constraints at this stage. Data is immutable.
 
@@ -38,7 +38,7 @@ The system follows the **Medallion Architecture** pattern, implemented within a 
 
     * **Deduplication:** Removal of overlapping records from incremental source files.
 
-* **Integrity:** Strict enforcement of `NOT NULL`, `UNIQUE`, and `CHECK` constraints.
+* **Integrity:** No Foreign Keys, only Primary Keys (for better performance). Strict enforcement of `NOT NULL`, `UNIQUE`, and `CHECK` constraints.
 
 
 
@@ -48,9 +48,9 @@ The system follows the **Medallion Architecture** pattern, implemented within a 
 
 * **Modeling:** Transition from 3NF to a **Dimensional Model (Star Schema)**. 
 
-* **Components:** * **Fact Tables:** Centrally located quantitative data (e.g., `fact_transfers`, `fact_appearances`).
+* **Components:** * **Fact Tables:** Centrally located quantitative data (e.g., `fact_transfers`, `fact_player_valuation`, `fact_player_stats`, `fact_team_stats`).
 
-    * **Dimension Tables:** Descriptive attributes (e.g., `dim_players`, `dim_clubs`, `dim_date`).
+    * **Dimension Tables:** Descriptive attributes (e.g., `dim_players`, `dim_clubs`, `dim_competitions`, `dim_games`).
 
 * **Optimization:** Use of Materialized Views and specialized Indexing (B-Tree/GIN) for sub-second query execution.
 
@@ -76,7 +76,7 @@ The system follows the **Medallion Architecture** pattern, implemented within a 
 
 
 
-The project utilizes the **Complete Transfermarkt Dataset** sourced from [Kaggle (David Cariboo)](https://www.kaggle.com/datasets/davidcariboo/player-scores). This dataset provides a comprehensive look at European football dynamics from 1970 to the present.
+The project utilizes the **Complete Transfermarkt Dataset** sourced from [Kaggle (David Cariboo)](https://www.kaggle.com/datasets/davidcariboo/player-scores). This dataset provides a comprehensive look at European football dynamics from 2012 to the present.
 
 
 
@@ -120,17 +120,16 @@ The raw data is ingested from 10 CSV files, forming the foundation of the Bronze
 * **Database:** PostgreSQL 16+
 * **Data Ingestion:** SQL `COPY` Command
 * **Modeling:** 3rd Normal Form (Silver) & Star Schema (Gold)
-* **Documentation:** Markdown & DBML
+* **Documentation:** Markdown, DBML & PNG
 
 ### 🧩 Key SQL Concepts Implemented
 To ensure production-grade quality, the following advanced SQL techniques are utilized:
 
 * **Data Integrity:** Strict usage of `PRIMARY KEY`, `FOREIGN KEY`, and `CHECK` constraints to prevent data corruption.
-* **Complex Transformations:** Using **CTEs (Common Table Expressions)** and **Window Functions** (`RANK()`, `LEAD/LAG`) for player performance and market value trends.
+* **Complex Transformations:** Using **CTEs (Common Table Expressions)**, **Window Functions** and **CASE Statements** for player/team performance and market value trends.
 * **Performance Optimization:** * **B-Tree Indexes** on join keys (IDs).
     * **Partial Indexes** for active player filtering.
-    * **Materialized Views** in the Gold Layer for heavy analytical aggregations.
-* **Automation:** PL/pgSQL Stored Procedures for the ETL process between Bronze and Silver layers.
+* **Automation:** PL/pgSQL Stored Procedures for the ETL process between Bronze, Silver and Gold layers.
 
 ## 4. Business & Analytical Use Cases
 
