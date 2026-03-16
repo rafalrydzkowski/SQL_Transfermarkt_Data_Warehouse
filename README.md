@@ -127,6 +127,12 @@ This project is designed to answer complex sports-business questions through adv
 * **Inflation Tracking:** Monitoring the average transfer fee growth across major European leagues over the last decade.
 * **Aging Curves:** Analyzing at what age players in specific positions (e.g., Strikers vs. Defenders) reach their peak market value.
 
+
+
+---
+
+
+
 ## 🚦 Getting Started
 To initialize and populate the entire Data Warehouse, follow the execution order below:
 
@@ -140,6 +146,12 @@ To initialize and populate the entire Data Warehouse, follow the execution order
 4. **Finalize Gold Schema:**
    ```sql
    CALL gold.sp_load_gold();
+
+
+
+---
+
+
 
 ## 🌟 About Me
 I am a **Data Engineering / Data Analytics enthusiast** with a focus on building scalable, high-integrity data warehouses. I specialize in transforming raw, messy datasets into actionable business intelligence using PostgreSQL and modern architectural patterns.
