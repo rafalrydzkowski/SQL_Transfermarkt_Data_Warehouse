@@ -1,4 +1,4 @@
-# 🏆 Gold Layer: Business Logic & Star Schema
+# 🥇  Gold Layer: Business Logic & Star Schema
 
 ## 🎯 Overview
 The Gold Layer (also known as the "Analytics Layer") represents the final stage of the data warehouse. It transforms standardized data from the **Silver** schema into a high-performance **Star Schema** optimized for BI tools (Power BI, Tableau) and advanced analytical queries.
