@@ -88,8 +88,9 @@ The raw data is ingested from 10 CSV files, forming the foundation of the Bronze
 
 ### 🛠 Technology Stack
 * **Database:** PostgreSQL 16+
-* **Data Ingestion:** SQL `COPY` Command
+* **Language:** PL/pgSQL
 * **Modeling:** Star Schema (Gold)
+* **Tools:** SQL, Regex for parsing, Window Functions for Analytics
 * **Documentation:** Markdown, DBML & PNG
 
 ### 🧩 Key SQL Concepts Implemented
