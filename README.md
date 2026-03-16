@@ -20,7 +20,7 @@ The project is structured into three distinct layers to ensure data quality, tra
 
 2.  **🥈 Silver (Cleansed):** Standardizes names, cleans financial strings (e.g., '€10m' to numeric), handles nulls, and enforces business rules.
 
-3.  **🥇 Gold (Business Logic & Star Schema):** Final Star Schema (Dimensions & Facts). Implements business logic, window functions for trend analysis, and is optimized for BI reporting and analytical queries.
+3.  **🥇 Gold (Business Logic & Star Schema):** Final Star Schema (Dimensions & Facts). Implements business logic, window functions for trend analysis, is optimized for BI reporting and analytical queries.
 
 
 
