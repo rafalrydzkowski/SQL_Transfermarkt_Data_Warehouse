@@ -26,7 +26,7 @@ The system follows the **Medallion Architecture** pattern, implemented within a 
 
 
 
-#### 🥈 Silver (Standardized / 3NF)
+#### 🥈 Silver (Standardized / Cleaned)
 
 * **Purpose:** The "Single Source of Truth." Data is cleansed, typed, and normalized.
 
