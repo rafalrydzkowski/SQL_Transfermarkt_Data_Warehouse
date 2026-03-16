@@ -17,7 +17,9 @@ The system follows the **Medallion Architecture** pattern, implemented within a 
 The project is structured into three distinct layers to ensure data quality, traceability, and performance:
 
 1.  **🥉 Bronze (Raw):** Stores raw CSV data as-is. Minimal processing, acting as a "Single Source of Truth."
+
 2.  **🥈 Silver (Cleansed):** Standardizes names, cleans financial strings (e.g., '€10m' to numeric), handles nulls, and enforces business rules.
+
 3.  **🏆 Gold (Curated):** Final Star Schema (Dimensions & Facts). Implements business logic, window functions for trend analysis, and is optimized for BI reporting.
 
 
