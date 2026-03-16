@@ -34,7 +34,7 @@ The system follows the **Medallion Architecture** pattern, implemented within a 
 
     * **Data Typing:** Converting strings to proper types (e.g., `NUMERIC(15,2)` for fees, `DATE` for match days).
 
-    * **Normalization:** Implementation of **3rd Normal Form (3NF)** to eliminate redundancy and ensure referential integrity (`PK/FK`).
+    * **Normalization:** Implementation of (`PK`) to ensure data quality.
 
     * **Deduplication:** Removal of overlapping records from incremental source files.
 
