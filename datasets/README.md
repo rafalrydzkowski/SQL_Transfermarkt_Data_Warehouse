@@ -11,4 +11,4 @@ To ensure repository portability and CI/CD compatibility, the following data han
 * **Version Note:** Development is based on the data snapshot from **March 10, 2026**.
 * **Usage:** Use these samples for validating DDL structures, indexing strategies, and pipeline syntax. For full analytical results (e.g., career-long goal trends), download the complete source from Kaggle.
 
-🔗 **Full Dataset Source:** [Transfermarkt: Football Data (Kaggle)](https://www.kaggle.com/datasets/davidcariboo/player-scores)
+### 🔗 Full Dataset Source: [Transfermarkt: Football Data (Kaggle)](https://www.kaggle.com/datasets/davidcariboo/player-scores)
