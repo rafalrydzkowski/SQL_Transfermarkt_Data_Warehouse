@@ -14,49 +14,13 @@ The system follows the **Medallion Architecture** pattern, implemented within a 
 
 ### 🏗️ Architectural Layers
 
+The project is structured into three distinct layers to ensure data quality, traceability, and performance:
+
+1.  **🥉 Bronze (Raw):** Stores raw CSV data as-is. Minimal processing, acting as a "Single Source of Truth."
+2.  **🥈 Silver (Cleansed):** Standardizes names, cleans financial strings (e.g., '€10m' to numeric), handles nulls, and enforces business rules.
+3.  **🏆 Gold (Curated):** Final Star Schema (Dimensions & Facts). Implements business logic, window functions for trend analysis, and is optimized for BI reporting.
 
 
-#### 🥉 Bronze (Raw / Landing Zone)
-
-* **Purpose:** Direct ingestion of raw Transfermarkt datasets (CSV)
-
-* **Strategy:** "Load-first, transform-later." Tables use flexible schema (primarily `TEXT`) to ensure 100% ingestion success and prevent data loss during the initial load.
-
-* **Integrity:** No Foreign Keys or complex constraints at this stage. Data is immutable.
-
-
-
-#### 🥈 Silver (Standardized / Cleaned)
-
-* **Purpose:** The "Single Source of Truth." Data is cleansed, typed, and normalized.
-
-* **Key Actions:**
-
-    * **Data Typing:** Converting strings to proper types (e.g., `NUMERIC(15,2)` for fees, `DATE` for match days).
-
-    * **Normalization:** Implementation of (`PK`) to ensure data quality.
-      
-    * **Integrity:** No Foreign Keys at this stage.
-
-    * **Deduplication:** Removal of overlapping records from incremental source files.
-
-* **Integrity:** No Foreign Keys, only Primary Keys (for better performance). Strict enforcement of `NOT NULL`, `UNIQUE`, and `CHECK` constraints.
-
-
-
-#### 🥇 Gold (Curated / Analytics-Ready)
-
-* **Purpose:** High-performance reporting and Business Intelligence (BI).
-
-* **Modeling:** Transition to a **Dimensional Model (Star Schema)**.
-
-* **Integrity:** Primary/Foreign Keys (`PK/FK`) implemented.
-
-* **Components:** * **Fact Tables:** Centrally located quantitative data (e.g., `fact_transfers`, `fact_player_valuation`, `fact_player_stats`, `fact_team_stats`).
-
-    * **Dimension Tables:** Descriptive attributes (e.g., `dim_players`, `dim_clubs`, `dim_competitions`, `dim_games`).
-
-* **Optimization:** Use of Indexing (B-Tree) for query execution.
 
 
 
