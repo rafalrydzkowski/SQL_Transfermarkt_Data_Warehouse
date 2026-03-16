@@ -147,8 +147,6 @@ To initialize and populate the entire Data Warehouse, follow the execution order
    ```sql
    CALL gold.sp_load_gold();
 
-
-
 ---
 
 
