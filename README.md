@@ -155,7 +155,7 @@ This project is designed to answer complex sports-business questions through adv
 I am a **Data Engineering / Data Analytics enthusiast** with a focus on building scalable, high-integrity data warehouses. I specialize in transforming raw, messy datasets into actionable business intelligence using PostgreSQL and modern architectural patterns.
 
 * **Looking for:** Junior Data Engineer or Data Analyst roles.
-* **Tech I love:** SQL (PostgreSQL), Data Modeling (3NF/Star Schema), Excel, PowerBI
+* **Tech I love:** SQL (PostgreSQL), Excel, PowerBI
 * **Fun Fact:** I chose the Transfermarkt dataset because I believe sports analytics is the ultimate test for handling temporal data and complex relational integrity.
 
 📫 **Let's connect:** www.linkedin.com/in/rafał-rydzkowski-319aa7252 | RafalRydzkowskiJ@gmail.com
