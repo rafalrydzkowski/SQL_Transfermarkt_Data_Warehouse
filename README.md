@@ -102,6 +102,15 @@ To ensure production-grade quality, the following advanced SQL techniques are ut
     * **Partial Indexes** for active player filtering.
 * **Automation:** PL/pgSQL Stored Procedures for the ETL process between Bronze, Silver and Gold layers.
 
+## ⚙️ ETL Orchestration
+The entire pipeline is automated through Stored Procedures, ensuring a reliable and repeatable data flow:
+
+| Layer | Procedure | Loading Strategy | Key Features |
+| :--- | :--- | :--- | :--- |
+| **Bronze** | `bronze.sp_load_bronze()` | `TRUNCATE & LOAD` | Rapid ingestion from external sources. |
+| **Silver** | `silver.sp_load_silver()` | `TRUNCATE & LOAD` | Regex parsing, geo-mapping, data normalization. |
+| **Gold** | `gold.sp_load_gold()` | `HYBRID` | Upserts for Dimensions, Truncate for Facts. |
+
 ## 4. Business & Analytical Use Cases
 
 This project is designed to answer complex sports-business questions through advanced SQL modeling. Below are the primary analytical tracks:
