@@ -35,6 +35,8 @@ The system follows the **Medallion Architecture** pattern, implemented within a 
     * **Data Typing:** Converting strings to proper types (e.g., `NUMERIC(15,2)` for fees, `DATE` for match days).
 
     * **Normalization:** Implementation of (`PK`) to ensure data quality.
+      
+    * **Integrity:** No Foreign Keys at this stage.
 
     * **Deduplication:** Removal of overlapping records from incremental source files.
 
@@ -46,13 +48,15 @@ The system follows the **Medallion Architecture** pattern, implemented within a 
 
 * **Purpose:** High-performance reporting and Business Intelligence (BI).
 
-* **Modeling:** Transition from 3NF to a **Dimensional Model (Star Schema)**. 
+* **Modeling:** Transition to a **Dimensional Model (Star Schema)**.
+
+* **Integrity:** Primary/Foreign Keys (`PK/FK`) implemented.
 
 * **Components:** * **Fact Tables:** Centrally located quantitative data (e.g., `fact_transfers`, `fact_player_valuation`, `fact_player_stats`, `fact_team_stats`).
 
     * **Dimension Tables:** Descriptive attributes (e.g., `dim_players`, `dim_clubs`, `dim_competitions`, `dim_games`).
 
-* **Optimization:** Use of Materialized Views and specialized Indexing (B-Tree/GIN) for sub-second query execution.
+* **Optimization:** Use of Indexing (B-Tree) for query execution.
 
 
 
