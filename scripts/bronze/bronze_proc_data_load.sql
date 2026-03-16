@@ -1,6 +1,6 @@
 /*
 ===============================================================================
-Stored Procedure: bronze.sp_load_bronze
+Stored Procedure: bronze.sp_load_bronze()
 ===============================================================================
 
 Database Schema: Bronze Layer (Raw, Immutable Data)
@@ -19,6 +19,8 @@ Process:
 
 Data Source:
     CSV files located in '/Users/Shared/postgres_data/transfermarkt/'
+
+Usage: CALL bronze.sp_load_bronze();
 
 ===============================================================================
 */
@@ -288,5 +290,4 @@ BEGIN
 END;
 $$;
 
--- To execute the procedure:
--- CALL bronze.sp_load_bronze();
+-- To execute the procedure: CALL bronze.sp_load_bronze();
