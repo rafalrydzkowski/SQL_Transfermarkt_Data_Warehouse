@@ -6,7 +6,8 @@ The Silver Layer (also known as the "Cleansing Layer") is responsible for transf
 The primary goal is to ensure that all data is "analytics-ready" before it reaches the Gold Layer for final business logic application.
 
 ## 🏗️ Architecture Principles
-- **Schema Enforcement:** Standardizing data types (e.g., converting strings to NUMERIC/DATE).
+- **Immutability:** Data is loaded from bronze layer tables.
+- **Data Transformation:** Cleaning, standardization, normalization, data enrichment, derived columns.
 
 ## ⚙️ Ingestion & ETL Orchestration (`sp_load_silver`)
 
