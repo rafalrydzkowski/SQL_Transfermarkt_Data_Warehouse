@@ -1,4 +1,4 @@
-# 🥈 Silver Layer: Integration & Standardization
+# 🥈 Silver Layer: Cleaning, Transformation & Standardization
 
 ## 🎯 Overview
 The Silver Layer (also known as the "Cleansing Layer") is responsible for transforming raw data from the **Bronze** schema into a clean, consistent, and relational format. 
