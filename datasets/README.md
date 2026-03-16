@@ -3,7 +3,7 @@
 > [!IMPORTANT]
 > **Data Integrity & Truncation Policy:** Due to GitHub's file size limits (25MB per file), high-volume tables have been strategically downsampled. This repository is optimized to showcase **SQL Architecture and Logic**, rather than serving as a full data mirror.
 
-### 📁 Directory: `/datasets/samples/`
+### 📁 Directory: [`/datasets/samples/`](./datasets/samples/)
 To ensure repository portability and CI/CD compatibility, the following data handling has been applied:
 
 * **Original Datasets:** Core tables such as `players`, `clubs`, `competitions`, `games`, `player_valuations` and `transfers` are included in their **full, original form**.
