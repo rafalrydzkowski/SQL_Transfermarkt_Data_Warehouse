@@ -102,7 +102,7 @@ To ensure production-grade quality, the following advanced SQL techniques are ut
     * **Partial Indexes** for active player filtering.
 * **Automation:** PL/pgSQL Stored Procedures for the ETL process between Bronze, Silver and Gold layers.
 
-## ⚙️ ETL Orchestration
+### ⚙️ ETL Orchestration
 The entire pipeline is automated through Stored Procedures, ensuring a reliable and repeatable data flow:
 
 | Layer | Procedure | Loading Strategy | Key Features |
