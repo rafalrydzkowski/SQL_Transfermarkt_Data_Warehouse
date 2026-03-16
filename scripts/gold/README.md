@@ -23,7 +23,7 @@ The primary focus of this layer is the **Top 14 domestic leagues**, ensuring a n
 * **Venue Intelligence:** Derives `stadium_filling_rate` by correlating match attendance with official stadium capacities stored in the club dimension.
 
 #### **League-Centric Filtering**
-* **Scope Control:** Automatically filters out domestic cups, friendlies, and international competitions via `WHERE type = 'domestic_league'`.
+* **Scope Control:** Automatically filters out domestic cups and international competitions via `WHERE type = 'domestic_league'`.
 * **Performance Metrics:** Standardizes match outcomes into a universal `points` system (3 for win, 1 for draw, 0 for loss) to enable instant league table generation.
 
 ## 🛠️ Data Model Highlights
