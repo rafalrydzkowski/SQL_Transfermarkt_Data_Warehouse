@@ -1,11 +1,14 @@
 ## 📊 Dataset Information
-Due to GitHub's file size limitations (**25MB** for browser uploads / **100MB** for LFS), the complete raw datasets are not hosted directly in this repository's main branch.
 
-### Data Source
-The full, original datasets must be downloaded from Kaggle:
-🔗 [Transfermarkt: Football Data from Transfermarkt](https://www.kaggle.com/datasets/davidcariboo/player-scores)
+> [!IMPORTANT]
+> **Data Integrity & Truncation Policy:** Due to GitHub's file size limits (25MB per file), high-volume tables have been strategically downsampled. This repository is optimized to showcase **SQL Architecture and Logic**, rather than serving as a full data mirror.
 
-### Versioning & Reproducibility
-* **Snapshot Date:** The development and logic of this project are based on data exported on **March 10, 2026**.
-* **Warning:** If you use a newer version of the dataset, schema changes or updated records might affect the results of the analytical queries.
-* **Sample Data:** For quick testing, I have included truncated versions of the `.csv` files (limited to 25MB) in the `/datasets/samples/` directory. **Note:** These samples are incomplete and should only be used to verify DDL and pipeline syntax.
+### 📁 Directory: `/datasets/samples/`
+To ensure repository portability and CI/CD compatibility, the following data handling has been applied:
+
+* **Original Datasets:** Core tables such as `players`, `clubs`, `competitions`, `games`, `player_valuations` and `transfers` are included in their **full, original form**.
+* **Truncated Datasets:** High-cardinality fact tables (`appearances`, `game_lineups`, `game_events`) have been **truncated to 25MB**.
+* **Version Note:** Development is based on the data snapshot from **March 10, 2026**.
+* **Usage:** Use these samples for validating DDL structures, indexing strategies, and pipeline syntax. For full analytical results (e.g., career-long goal trends), download the complete source from Kaggle.
+
+🔗 **Full Dataset Source:** [Transfermarkt: Football Data (Kaggle)](https://www.kaggle.com/datasets/davidcariboo/player-scores)
