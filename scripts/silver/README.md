@@ -22,7 +22,6 @@ The primary goal is to ensure that all data is "analytics-ready" before it reach
 
 #### **Data Quality & Referential Integrity**
 * **Outlier Mitigation:** Enforces physical business rules (e.g., nullifying heights < 120cm or jersey numbers > 99).
-* **Relational Enforcement:** Implements `WHERE EXISTS` filters to prevent "orphan" match statistics for players not present in the master dimension.
 * **Match-Clock Validation:** Hard-caps match minutes at 120m to eliminate common data-entry errors (e.g., 999 min entries).
 * **Null Handling:** Converts logical `0` values in financial and squad metrics to `NULL`, preventing skewed statistical averages in the Gold Layer.
 * **Logical Consistency Checks:** Validates match events to ensure internal integrity (e.g., preventing a player from assisting their own goal or substituting themselves).
