@@ -129,7 +129,7 @@ The raw data is ingested from 10 CSV files, forming the foundation of the Bronze
 ### 🧩 Key SQL Concepts Implemented
 To ensure production-grade quality, the following advanced SQL techniques are utilized:
 
-* **Data Integrity:** Strict usage of `PRIMARY KEY`, `FOREIGN KEY`, and `CHECK` constraints to prevent data corruption.
+* **Data Integrity:** Strict usage of `PRIMARY KEY` and `FOREIGN KEY` to prevent data corruption.
 * **Complex Transformations:** Using **CTEs (Common Table Expressions)**, **Window Functions** and **CASE Statements** for player/team performance and market value trends.
 * **Performance Optimization:** * **B-Tree Indexes** on join keys (IDs).
     * **Partial Indexes** for active player filtering.
