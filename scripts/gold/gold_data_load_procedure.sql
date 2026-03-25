@@ -147,7 +147,7 @@ BEGIN
     INSERT INTO gold.dim_clubs
     (
     club_id, club_code, name, competition_id, stadium_name,
-    stadium_seats, last_season, url, filename
+    stadium_seats, last_season, url
     )
     SELECT 
         cl.club_id,
@@ -157,8 +157,7 @@ BEGIN
         cl.stadium_name,
         cl.stadium_seats,
         cl.last_season,
-        cl.url,
-        cl.filename
+        cl.url
     FROM silver.clubs AS cl
     INNER JOIN gold.dim_competitions AS c ON cl.competition_id = c.competition_id
     ON CONFLICT (club_id) DO UPDATE SET
@@ -168,8 +167,7 @@ BEGIN
         stadium_name = EXCLUDED.stadium_name,
         stadium_seats = EXCLUDED.stadium_seats,
         last_season = EXCLUDED.last_season,
-        url = EXCLUDED.url,
-        filename = EXCLUDED.filename;
+        url = EXCLUDED.url;
     
 
     GET DIAGNOSTICS v_row_count = ROW_COUNT;
