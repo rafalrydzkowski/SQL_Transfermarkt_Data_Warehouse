@@ -103,3 +103,26 @@ This document provides a detailed description of the tables in the **Gold Layer*
 | **url** | VARCHAR(255) | Direct source link to the player profile on Transfermarkt. |
 
 ---
+
+## 📊 Fact Tables
+
+### 1. `gold.fact_player_valuations`
+* **Purpose:** A fact table tracking the historical evolution of player market values over time, allowing for trend analysis and career growth modeling.
+> **NOTE:** In the Gold Layer, the scope is strictly limited to **domestic league matches** from the **Top 14 leagues** for the period from **2012 to the present**. Only valuation records associated with players active in these leagues during the specified timeframe are included.
+
+* **Columns:**
+
+| Column Name | Data Type | Description |
+| :--- | :--- | :--- |
+| **valuation_id** | INT | **Primary Key**. Unique identifier assigned to each valuation. |
+| **player_id** | INT | **Foreign Key**. Unique ID of the player (links to `gold.dim_players`). |
+| **date_of_valuation** | DATE | The specific date when the market value was updated. |
+| **valuation_age** | INT | The age of the player at the moment of valuation. |
+| **club_id_at_valuation** | INT | The club the player was representing at the time of valuation (possibly Club outside TOP14 Leagues). |
+| **competition_id_at_valuation** | VARCHAR(20) | The league the player was competing in at the time of valuation (possibly Competition outside TOP14). |
+| **market_value_in_eur** | NUMERIC(15,2) | The estimated market value in Euros at that specific point in time. |
+| **valuation_change_prev** | NUMERIC(15,2) | The numerical difference (increase/decrease) compared to the previous valuation. |
+| **is_current** | BOOLEAN | Flag indicating if this is the most recent valuation for the player. |
+| **is_highest_ever** | BOOLEAN | Flag identifying the peak career market value for the player. |
+
+---
