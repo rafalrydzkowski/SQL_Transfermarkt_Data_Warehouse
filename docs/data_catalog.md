@@ -38,7 +38,6 @@ This document provides a detailed description of the tables in the **Gold Layer*
 | **stadium_seats** | INT | Total spectator capacity of the stadium. |
 | **last_season** | INT | The last season the club competed in a Top 14 domestic league (Range: 2012–Present). |
 | **url** | VARCHAR(255) | Direct source link to the club profile on Transfermarkt. |
-| **filename** | VARCHAR(255) | Reference to the source data file used for ingestion. |
 
 ---
 
