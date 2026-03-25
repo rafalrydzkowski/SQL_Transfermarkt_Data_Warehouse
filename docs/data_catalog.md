@@ -126,3 +126,25 @@ This document provides a detailed description of the tables in the **Gold Layer*
 | **is_highest_ever** | BOOLEAN | Flag identifying the peak career market value for the player. |
 
 ---
+
+### 2. `gold.fact_transfers`
+* **Purpose:** A fact table logging all professional transfer activities and loan moves, capturing financial details and movement between clubs/leagues.
+> **NOTE:** This table includes transfers of players where player's last season in TOP14 leagues is current season (2025).
+
+| Column Name | Data Type | Description |
+| :--- | :--- | :--- |
+| **transfer_id** | INT | **Primary Key**. Unique identifier for the specific transfer event. |
+| **player_id** | INT | **Foreign Key**. Unique ID of the player involved (links to `gold.dim_players`). |
+| **transfer_date** | DATE | The official date the transfer was completed. |
+| **transfer_season** | INT | The football season associated with the transfer (e.g., 2022). |
+| **from_club_id** | INT | The selling/releasing club. |
+| **from_competition_id** | VARCHAR(20) | The league of the origin club |
+| **to_club_id** | INT | The buying/receiving club |
+| **to_competition_id** | VARCHAR(20) | The league of the destination club |
+| **transfer_fee** | NUMERIC(15,2) | The monetary value of the transfer in Euros. |
+| **market_value_at_transfer** | NUMERIC(15,2) | The player's estimated market value at the time of the move. |
+| **is_non_cash_transfer** | BOOLEAN | Flag indicating if the move was a free transfer, loan, or swap (Fee = 0). |
+| **is_latest_transfer** | BOOLEAN | Flag identifying the most recent transfer record for the player. |
+| **is_record_breaking_for_player** | BOOLEAN | Indicates if this fee is the highest ever paid for this specific player. |
+
+---
