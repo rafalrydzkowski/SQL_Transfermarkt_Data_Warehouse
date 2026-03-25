@@ -7,16 +7,19 @@ This document provides a detailed description of the tables in the **Gold Layer*
 ## 🏗️ Dimension Tables
 
 ### 1. `gold.dim_competitions`
-* **Purpose:** Stores master records for football competitions and leagues.
+* **Purpose:** Stores master records for football competitions and leagues, providing metadata for tournament classification.
+> **NOTE:** In the Gold Layer, the scope is strictly limited to **domestic league matches** from the **Top 14 leagues**. Domestic cups and European competitions (e.g., Champions League, Europa League) are excluded to ensure statistical consistency and focus on league performance.
 * **Columns:**
 
 | Column Name | Data Type | Description |
 | :--- | :--- | :--- |
-| competition_id | VARCHAR(20) | Primary Key. Unique identifier for the competition (e.g., 'L1', 'PL'). |
-| name | VARCHAR(100) | Official name of the league or tournament. |
-| type | VARCHAR(50) | Classification (e.g., 'domestic_league', 'international_cup'). |
-| country_name | VARCHAR(100) | Name of the country hosting the competition. |
-| url | VARCHAR(255) | Source link to the competition page on Transfermarkt. |
+| **competition_id** | VARCHAR(20) | **Primary Key**. Unique identifier for the competition (e.g., 'L1', 'GB1'). |
+| **name** | VARCHAR(100) | Official name of the league or tournament. |
+| **type** | VARCHAR(50) | Competition category (e.g., 'domestic_league'). |
+| **country_name** | VARCHAR(100) | The name of the country associated with the competition. |
+| **url** | VARCHAR(255) | Direct source link to the competition profile on Transfermarkt. |
+
+---
 
 ---
 
