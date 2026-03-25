@@ -131,6 +131,8 @@ This document provides a detailed description of the tables in the **Gold Layer*
 * **Purpose:** A fact table logging all professional transfer activities and loan moves, capturing financial details and movement between clubs/leagues.
 > **NOTE:** This table includes transfers of players where player's last season in TOP14 leagues is current season (2025).
 
+* **Columns:**
+  
 | Column Name | Data Type | Description |
 | :--- | :--- | :--- |
 | **transfer_id** | INT | **Primary Key**. Unique identifier for the specific transfer event. |
@@ -146,5 +148,36 @@ This document provides a detailed description of the tables in the **Gold Layer*
 | **is_non_cash_transfer** | BOOLEAN | Flag indicating if the move was a free transfer, loan, or swap (Fee = 0). |
 | **is_latest_transfer** | BOOLEAN | Flag identifying the most recent transfer record for the player. |
 | **is_record_breaking_for_player** | BOOLEAN | Indicates if this fee is the highest ever paid for this specific player. |
+
+---
+
+### 3. `gold.fact_player_stats`
+* **Purpose:** A highly granular fact table capturing individual player performance metrics for every match appearance. It serves as the foundation for player productivity and impact analysis.
+> **NOTE:** In the Gold Layer, the scope is strictly limited to **domestic league matches** from the **Top 14 leagues** for the period from **2012 to the present**. This table contains over **1.4 million records**, representing every individual player "stint" on the pitch.
+
+* **Columns:**
+  
+| Column Name | Data Type | Description |
+| :--- | :--- | :--- |
+| **appearance_id** | VARCHAR(50) | **Primary Key**. Unique identifier for the specific player appearance in a game. |
+| **game_id** | INT | **Foreign Key**. Links to `gold.dim_games`. |
+| **competition_id** | VARCHAR(20) | **Foreign Key**. Links to `gold.dim_competitions`. |
+| **season** | INT | The football season when the match occurred (e.g., 2023). |
+| **date** | DATE | The date of the match. |
+| **player_id** | INT | **Foreign Key**. Links to `gold.dim_players`. |
+| **club_id** | INT | **Foreign Key**. The club the player represented in this match (links to `gold.dim_clubs`). |
+| **opponent_id** | INT | **Foreign Key**. The ID of the opposing club. |
+| **is_clean_sheet** | BOOLEAN | Indicates if the player's team conceded zero goals during the match. |
+| **goals** | INT | Number of goals scored by the player in this match. |
+| **assists** | INT | Number of assists provided by the player. |
+| **yellow_cards** | INT | Number of yellow cards received (0, 1, or 2). |
+| **red_cards** | INT | Number of red cards received (0 or 1). |
+| **minutes_played** | INT | Total time spent on the pitch (capped/validated during ETL). |
+| **player_number** | INT | The jersey number worn by the player in this game. |
+| **position** | VARCHAR(50) | The specific tactical position played in this match. |
+| **is_starting_lineup** | BOOLEAN | Flag: `TRUE` if the player started in the first XI. |
+| **is_captain** | BOOLEAN | Flag: `TRUE` if the player wore the captain's armband. |
+| **is_home** | BOOLEAN | Flag: `TRUE` if the player's club was the home team. |
+| **is_win** | BOOLEAN | Flag: `TRUE` if the player's team won the match. |
 
 ---
