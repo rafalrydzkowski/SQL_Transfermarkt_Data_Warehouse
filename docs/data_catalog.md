@@ -22,6 +22,25 @@ This document provides a detailed description of the tables in the **Gold Layer*
 
 ---
 
+### 2. `gold.dim_clubs`
+* **Purpose:** Stores comprehensive metadata for football clubs, including infrastructure details and competition affiliation.
+
+* **Columns:**
+
+| Column Name | Data Type | Description |
+| :--- | :--- | :--- |
+| **club_id** | INT | **Primary Key**. Unique numerical identifier for each football club. |
+| **club_code** | VARCHAR(100) | Alphanumeric short code representing the club. |
+| **name** | VARCHAR(100) | Official name of the football club. |
+| **competition_id** | VARCHAR(20) | **Foreign Key**. Unique ID of the domestic league (links to `gold.dim_competitions`). |
+| **stadium_name** | VARCHAR(100) | Name of the club's home stadium. |
+| **stadium_seats** | INT | Total spectator capacity of the stadium. |
+| **last_season** | INT | The most recent season in which the club was active in the filtered dataset. |
+| **url** | VARCHAR(255) | Direct source link to the club profile on Transfermarkt. |
+| **filename** | VARCHAR(255) | Reference to the source data file used for ingestion. |
+
+---
+
 ### 3. `gold.dim_games`
 * **Purpose:** Provides detailed context for individual match fixtures, including technical setups and match-day metadata.
 > **NOTE:** In the Gold Layer, the scope is strictly limited to **domestic league matches** from the **Top 14 leagues**. Domestic cups and European competitions (e.g., Champions League, Europa League) are excluded to ensure statistical consistency and focus on league performance.
