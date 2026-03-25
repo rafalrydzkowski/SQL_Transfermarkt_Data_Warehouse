@@ -24,7 +24,7 @@ This document provides a detailed description of the tables in the **Gold Layer*
 
 ### 2. `gold.dim_clubs`
 * **Purpose:** Stores comprehensive metadata for football clubs, including infrastructure details and competition affiliation.
-> **NOTE:** In the Gold Layer, the scope is strictly limited to **domestic league matches** from the **Top 14 leagues** for the period from **2012 to the present**. The `last_season` column indicates the most recent year the club participated in a Top 14 league (e.g., a club that was relegated in 2019 and has not returned to the top flight since will show 2019 as its `last_season`).
+> **NOTE:** In the Gold Layer, the scope is strictly limited to **domestic league matches** from the **Top 14 leagues** for the period from **2012 to the present**. The `last_season` column indicates the most recent year the club participated in a Top 14 league (e.g., a club that was relegated in 2019 and has not returned to the top league since will show 2019 as its `last_season`).
 
 * **Columns:**
 
