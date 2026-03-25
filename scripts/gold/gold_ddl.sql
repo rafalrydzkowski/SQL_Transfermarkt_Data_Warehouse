@@ -180,7 +180,7 @@ CREATE TABLE gold.fact_player_valuations (
     is_current                  BOOLEAN,
     is_highest_ever             BOOLEAN,
     
-    CONSTRAINT pk_player_valuations PRIMARY KEY (player_id, date_of_valuation),
+    CONSTRAINT pk_player_valuations PRIMARY KEY (valuation_id),
     CONSTRAINT fk_gold_player_valuations_players
         FOREIGN KEY (player_id) 
         REFERENCES gold.dim_players (player_id)
