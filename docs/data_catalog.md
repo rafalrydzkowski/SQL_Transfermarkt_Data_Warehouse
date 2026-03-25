@@ -21,8 +21,6 @@ This document provides a detailed description of the tables in the **Gold Layer*
 
 ---
 
----
-
 ### 2. `gold.dim_clubs`
 * **Purpose:** Contains detailed information about football clubs across various seasons.
 * **Columns:**
