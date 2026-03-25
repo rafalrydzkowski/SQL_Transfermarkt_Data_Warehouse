@@ -106,7 +106,6 @@ CREATE TABLE gold.dim_clubs (
     stadium_seats               INT,
     last_season                 INT,
     url                         VARCHAR(255),
-    filename                    VARCHAR(255),
     
     CONSTRAINT pk_clubs PRIMARY KEY (club_id),
     CONSTRAINT fk_gold_clubs_competition 
