@@ -66,9 +66,9 @@ The raw data is ingested from 10 CSV files, forming the foundation of the Bronze
 
 | `competitions.csv`| **Leagues** | `country_id` | Confederation and league tier metadata. |
 
-| `games.csv` | **Matches** | `competition_id`, `home/away_club_id` | Match-level results, attendance, and managers. |
+| `games.csv` | **Matches** | `competition_id`, `home/away_club_id` | Match-level results, attendance and managers. |
 
-| `transfers.csv` | **Transfers** | `player_id`, `from/to_club_id` | Transactional data: fees, seasons, and market values. |
+| `transfers.csv` | **Transfers** | `player_id`, `from/to_club_id` | Transactional data: fees, seasons and market values. |
 
 | `appearances.csv` | **Stats** | `game_id`, `player_id` | Individual performance (goals, assists, minutes). |
 
