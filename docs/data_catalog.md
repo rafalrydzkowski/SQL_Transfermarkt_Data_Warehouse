@@ -71,3 +71,35 @@ This document provides a detailed description of the tables in the **Gold Layer*
 
 ---
 
+### 4. `gold.dim_players`
+* **Purpose:** Comprehensive master data for football players, enriched with demographic attributes and technical profiles.
+> **NOTE:** In the Gold Layer, the scope is strictly limited to **domestic league matches** from the **Top 14 leagues** for the period from **2012 to the present**. The `last_season` column indicates the most recent year the player was active in a Top 14 league.
+
+* **Columns:**
+
+| Column Name | Data Type | Description |
+| :--- | :--- | :--- |
+| **player_id** | INT | **Primary Key**. Unique identifier assigned to each player. |
+| **first_name** | VARCHAR(100) | Player's given name. |
+| **last_name** | VARCHAR(100) | Player's family name. |
+| **name** | VARCHAR(255) | Full display name (Combined first and last name). |
+| **last_season** | INT | The last season the player was registered in a Top 14 league. |
+| **current_club_id** | INT | **Foreign Key**. Links to `gold.dim_clubs` (Current or last club from TOP14 Leagues). |
+| **current_club_name** | VARCHAR(100) | Denormalized name of the player's current/last club for easier querying. |
+| **current_club_domestic_competition_id** | VARCHAR(20) | ID of the domestic league where the player's club competes. |
+| **country_of_birth** | VARCHAR(100) | Standardized name of the country where the player was born. |
+| **city_of_birth** | VARCHAR(100) | City of birth. |
+| **country_of_citizenship** | VARCHAR(100) | Primary nationality of the player. |
+| **date_of_birth** | DATE | Player's birthday (YYYY-MM-DD). |
+| **sub_position** | VARCHAR(50) | Specific tactical position (e.g., 'Centre-Forward', 'Left-Back'). |
+| **position** | VARCHAR(50) | General field position (e.g., 'Attack', 'Defender'). |
+| **foot** | VARCHAR(20) | Preferred kicking foot (Left, Right, Both). |
+| **height_in_cm** | INT | Player's height measured in centimeters. |
+| **market_value_in_eur** | NUMERIC(15,2) | Most recent estimated market value in Euros. |
+| **highest_market_value_in_eur** | NUMERIC(15,2) | The peak market value achieved during the player's career. |
+| **contract_expiration_date** | DATE | Expiry date of the current professional contract. |
+| **agent_name** | VARCHAR(150) | Name of the agency or agent representing the player. |
+| **image_url** | VARCHAR(255) | Link to the player's profile picture. |
+| **url** | VARCHAR(255) | Direct source link to the player profile on Transfermarkt. |
+
+---
