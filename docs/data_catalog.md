@@ -24,6 +24,7 @@ This document provides a detailed description of the tables in the **Gold Layer*
 
 ### 2. `gold.dim_clubs`
 * **Purpose:** Stores comprehensive metadata for football clubs, including infrastructure details and competition affiliation.
+> **NOTE:** In the Gold Layer, the scope is strictly limited to **domestic league matches** from the **Top 14 leagues** for the period from **2012 to the present**. The `last_season` column indicates the most recent year the club participated in a Top 14 league (e.g., a club that was relegated in 2019 and has not returned to the top flight since will show 2019 as its `last_season`).
 
 * **Columns:**
 
@@ -35,7 +36,7 @@ This document provides a detailed description of the tables in the **Gold Layer*
 | **competition_id** | VARCHAR(20) | **Foreign Key**. Unique ID of the domestic league (links to `gold.dim_competitions`). |
 | **stadium_name** | VARCHAR(100) | Name of the club's home stadium. |
 | **stadium_seats** | INT | Total spectator capacity of the stadium. |
-| **last_season** | INT | The most recent season in which the club was active in the filtered dataset. |
+| **last_season** | INT | The last season the club competed in a Top 14 domestic league (Range: 2012–Present). |
 | **url** | VARCHAR(255) | Direct source link to the club profile on Transfermarkt. |
 | **filename** | VARCHAR(255) | Reference to the source data file used for ingestion. |
 
