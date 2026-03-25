@@ -181,3 +181,36 @@ This document provides a detailed description of the tables in the **Gold Layer*
 | **is_win** | BOOLEAN | Flag: `TRUE` if the player's team won the match. |
 
 ---
+
+### 4. `gold.fact_team_stats`
+* **Purpose:** An aggregated fact table focusing on team-level performance per match. It simplifies the analysis of league tables, managerial head-to-heads, and stadium utilization.
+> **NOTE:** In the Gold Layer, the scope is strictly limited to **domestic league matches** from the **Top 14 leagues** for the period from **2012 to the present**. This table provides a dual-entry grain (two rows per `game_id`), allowing for direct filtering by `club_id`.
+
+* **Columns:**
+  
+| Column Name | Data Type | Description |
+| :--- | :--- | :--- |
+| **game_id** | INT | **Composite Primary Key / Foreign Key**. Links to `gold.dim_games`. |
+| **club_id** | INT | **Composite Primary Key / Foreign Key**. Links to `gold.dim_clubs`. |
+| **date** | DATE | The date the match was played. |
+| **season** | INT | The football season (e.g., 2023). |
+| **competition_id** | VARCHAR(20) | Unique ID of the competition's league. |
+| **opponent_id** | INT | Unique ID of the opposing club. |
+| **own_manager_name** | VARCHAR(50) | Name of the manager leading the team in this match. |
+| **opponent_manager_name** | VARCHAR(50) | Name of the manager leading the opposing team. |
+| **own_goals** | INT | Goals scored by the team. |
+| **opponent_goals** | INT | Goals conceded by the team. |
+| **goal_difference** | INT | Calculated as `own_goals - opponent_goals`. |
+| **own_position** | INT | League table position of the team before the match. |
+| **opponent_position** | INT | League table position of the opponent before the match. |
+| **position_diff** | INT | The gap in league standings between the two teams. |
+| **attendance** | INT | Number of spectators in the stadium. |
+| **stadium_filling_rate** | NUMERIC(10,2) | Percentage of stadium capacity utilized (Attendance / Stadium Seats). |
+| **is_home** | BOOLEAN | Flag: `TRUE` if the team was playing at their home stadium. |
+| **is_clean_sheet** | BOOLEAN | Flag: `TRUE` if the team conceded zero goals. |
+| **is_win** | BOOLEAN | Flag: `TRUE` if the team won the match. |
+| **is_draw** | BOOLEAN | Flag: `TRUE` if the match ended in a draw. |
+| **is_loss** | BOOLEAN | Flag: `TRUE` if the team lost the match. |
+| **points** | INT | Points earned from the match (3 for Win, 1 for Draw, 0 for Loss). |
+
+---
