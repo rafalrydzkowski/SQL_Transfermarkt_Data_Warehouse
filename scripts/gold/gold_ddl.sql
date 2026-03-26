@@ -184,6 +184,14 @@ CREATE TABLE gold.fact_player_valuations (
     CONSTRAINT fk_gold_player_valuations_players
         FOREIGN KEY (player_id) 
         REFERENCES gold.dim_players (player_id)
+        ON DELETE RESTRICT,
+    CONSTRAINT fk_gold_player_valuations_clubs
+        FOREIGN KEY (club_id_at_valuation) 
+        REFERENCES gold.dim_clubs (club_id)
+        ON DELETE RESTRICT,
+    CONSTRAINT fk_gold_player_valuations_competitions
+        FOREIGN KEY (competition_id_at_valuation) 
+        REFERENCES gold.dim_competitions (competition_id)
         ON DELETE RESTRICT
 );
 
