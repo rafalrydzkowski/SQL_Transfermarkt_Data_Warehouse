@@ -347,33 +347,32 @@ BEGIN
     player_number, position, is_starting_lineup, is_captain, is_home, is_win
     )
     SELECT
-        a.appearance_id,
+        CONCAT(gl.game_id,'_',gl.player_id) AS appearance_id,
         g.game_id,
-        c.competition_id,
+        g.competition_id,
         g.season,
         g.date,
         p.player_id,
         cl.club_id,
         cl2.club_id AS opponent_id,
         cg.opponent_goals = 0 AS is_clean_sheet,
-        a.goals,
-        a.assists,
-        a.yellow_cards,
-        a.red_cards,
-        a.minutes_played,
+        COALESCE(a.goals,0),
+        COALESCE(a.assists,0),
+        COALESCE(a.yellow_cards,0),
+        COALESCE(a.red_cards,0),
+        COALESCE(a.minutes_played,0),
         gl.number,
         gl.position, 
         gl.is_starting_lineup,
         gl.is_captain,
         cg.is_home,
         cg.is_win
-    FROM silver.appearances AS a
-    INNER JOIN gold.dim_competitions AS c ON a.competition_id = c.competition_id
-    INNER JOIN gold.dim_games AS g ON a.game_id = g.game_id
-    INNER JOIN gold.dim_players AS p ON a.player_id = p.player_id
-    INNER JOIN gold.dim_clubs AS cl ON a.club_id = cl.club_id
-    LEFT JOIN silver.game_lineups AS gl ON a.game_id = gl.game_id AND a.player_id = gl.player_id
-    LEFT JOIN silver.club_games AS cg ON a.game_id = cg.game_id AND a.club_id = cg.club_id
+    FROM silver.game_lineups AS gl
+    INNER JOIN gold.dim_games AS g ON gl.game_id = g.game_id
+    INNER JOIN gold.dim_players AS p ON gl.player_id = p.player_id
+    INNER JOIN gold.dim_clubs AS cl ON gl.club_id = cl.club_id
+    LEFT JOIN silver.appearances AS a ON gl.game_id = a.game_id AND gl.player_id = a.player_id
+    LEFT JOIN silver.club_games AS cg ON gl.game_id = cg.game_id AND gl.club_id = cg.club_id
     LEFT JOIN gold.dim_clubs AS cl2 ON cg.opponent_id = cl2.club_id;
 
     GET DIAGNOSTICS v_row_count = ROW_COUNT;
