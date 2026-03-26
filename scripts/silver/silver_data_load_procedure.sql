@@ -437,25 +437,25 @@ BEGIN
         minutes_played
     )
     SELECT 
-        appearance_id,
-        game_id,
-        date,
-        UPPER(TRIM(competition_id)),
-        player_id,
-        TRIM(player_name),
-        player_club_id,
-        goals,
-        assists,
-        yellow_cards,
-        red_cards,
+        a.appearance_id,
+        a.game_id,
+        a.date,
+        UPPER(TRIM(a.competition_id)),
+        a.player_id,
+        TRIM(a.player_name),
+        a.player_club_id,
+        a.goals,
+        a.assists,
+        a.yellow_cards,
+        a.red_cards,
         CASE
-            WHEN minutes_played > 120 THEN 120
-            ELSE minutes_played END AS minutes_played
+            WHEN c.type = 'domestic_league' AND a.minutes_played > 90 THEN 90
+            WHEN c.type IS NOT NULL AND a.minutes_played > 120 THEN 120
+            ELSE a.minutes_played END AS minutes_played
     FROM bronze.appearances AS a
-    WHERE EXISTS (
-        SELECT 1 
-        FROM silver.players p 
-        WHERE p.player_id = a.player_id);
+    INNER JOIN silver.players AS p ON a.player_id = p.player_id
+    LEFT JOIN silver.competitions AS c ON a.competition_id = c.competition_id;
+    
 
     GET DIAGNOSTICS v_row_count = ROW_COUNT;
 
