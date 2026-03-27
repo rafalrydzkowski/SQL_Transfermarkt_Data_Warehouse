@@ -299,12 +299,12 @@ DROP TABLE IF EXISTS gold.fact_team_stats;
 
 CREATE TABLE gold.fact_team_stats
 (
-    game_id                 INT,
+    game_id                 INT NOT NULL,
     date                    DATE,
     season                  INT,
     competition_id          VARCHAR(20),
-    club_id                 INT,
-    opponent_id             INT,
+    club_id                 INT NOT NULL,
+    opponent_id             INT NOT NULL,
     own_manager_name        VARCHAR(50),
     opponent_manager_name   VARCHAR(50),
     own_goals               INT,
