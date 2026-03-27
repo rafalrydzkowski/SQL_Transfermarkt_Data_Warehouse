@@ -397,7 +397,7 @@ BEGIN
     INSERT INTO gold.fact_team_stats
     (
     game_id, date, season, competition_id, club_id, opponent_id, own_manager_name, opponent_manager_name, own_goals, 
-    opponent_goals, goal_difference, own_position, opponent_position, position_diff, attendance, stadium_filling_rate, 
+    opponent_goals, goal_difference, own_position, opponent_position, position_diff, attendance,
     is_home, is_clean_sheet, is_win, is_draw, is_loss, points
     )
     SELECT
@@ -416,11 +416,6 @@ BEGIN
         cg.opponent_position,
         (cg.opponent_position - cg.own_position) AS position_diff,
         g.attendance,
-        CASE
-            WHEN g.attendance = 0 THEN 0
-            WHEN cg.is_home = TRUE THEN ROUND(g.attendance::NUMERIC/NULLIF(c.stadium_seats,0)::NUMERIC,2)
-            ELSE ROUND(g.attendance::NUMERIC/NULLIF(c2.stadium_seats,0)::NUMERIC,2) 
-        END AS stadium_filling_rate,
         cg.is_home,
         cg.opponent_goals = 0 AS is_clean_sheet,
         cg.own_goals > cg.opponent_goals AS is_win,
