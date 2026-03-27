@@ -313,7 +313,7 @@ BEGIN
         t.transfer_fee,
         t.market_value_in_eur,
         COALESCE(t.transfer_fee,0) = 0 AS is_non_cash_transfer,
-        t.transfer_date = MAX(t.transfer_date) OVER(PARTITION BY p.player_id) AS is_latest_transfer,
+        (ROW_NUMBER() OVER (PARTITION BY p.player_id ORDER BY t.transfer_date DESC, t.transfer_id DESC) = 1) AS is_latest_transfer,
         (t.transfer_fee = MAX(t.transfer_fee) OVER(PARTITION BY p.player_id) AND t.transfer_fee > 0) AS is_record_breaking_for_player
     FROM silver.transfers AS t
     INNER JOIN gold.dim_players AS p ON t.player_id = p.player_id
