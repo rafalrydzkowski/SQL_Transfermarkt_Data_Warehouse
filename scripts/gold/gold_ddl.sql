@@ -314,7 +314,6 @@ CREATE TABLE gold.fact_team_stats
     opponent_position       INT,
     position_diff           INT,
     attendance              INT,
-    stadium_filling_rate    NUMERIC(10,2),
     is_home                 BOOLEAN,
     is_clean_sheet          BOOLEAN,
     is_win                  BOOLEAN,
