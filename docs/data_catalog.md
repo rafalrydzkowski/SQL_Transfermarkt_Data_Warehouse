@@ -205,7 +205,6 @@ This document provides a detailed description of the tables in the **Gold Layer*
 | **opponent_position** | INT | League table position of the opponent before the match. |
 | **position_diff** | INT | The gap in league standings between the two teams. |
 | **attendance** | INT | Number of spectators in the stadium. |
-| **stadium_filling_rate** | NUMERIC(10,2) | Percentage of stadium capacity utilized (Attendance / Stadium Seats). |
 | **is_home** | BOOLEAN | Flag: `TRUE` if the team was playing at their home stadium. |
 | **is_clean_sheet** | BOOLEAN | Flag: `TRUE` if the team conceded zero goals. |
 | **is_win** | BOOLEAN | Flag: `TRUE` if the team won the match. |
