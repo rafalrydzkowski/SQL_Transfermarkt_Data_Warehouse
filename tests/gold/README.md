@@ -1,11 +1,11 @@
-# 🛡️ Data Quality Framework | Gold Layer
+# 🛡️ Data Quality Framework - Gold Layer
 
-## Overview
+## 🎯 Overview
 This directory contains a suite of SQL validation scripts designed to ensure the integrity, consistency, and business accuracy of the **Gold Layer** within the `SQL_Data_Warehouse_Transfermarkt` project. 
 
-These tests are executed manually as part of the Post-Load validation process to certify that the data is "Reporting-Ready" for BI tools (e.g., Power BI, Tableau).
+> **Goal:** To certify that all data is "Reporting-Ready" for professional analysis in SQL or BI tools like Power BI by catching anomalies before they reach the end-user. 🚀
 
-## Testing Methodology
+## 🧪 Testing Methodology
 Each of the 8 core tables is subjected to a multi-layered validation approach:
 
 ### 1. Technical & Structural Integrity
@@ -27,23 +27,23 @@ Each of the 8 core tables is subjected to a multi-layered validation approach:
 
 ---
 
-## Test Coverage (8 Tables)
+## 📋 Test Coverage (8 Tables)
 
 | Category | Table | Primary Validation Focus |
 | :--- | :--- | :--- |
 | **Dimensions** | `gold.dim_players` | PK, Age/Height sanity, Financial peak consistency, URL formats. |
-| | `gold.dim_clubs` | PK, Stadium seat ranges, Competition affiliation, Last season scope. |
-| | `gold.dim_games` | PK, Home/Away ID conflict, Attendance logic, Date range (2012+). |
-| | `gold.dim_competitions` | PK, Type validation (Domestic League only), Top 14 count. |
+| **Dimensions** | `gold.dim_clubs` | PK, Stadium seat ranges, Competition affiliation, Last season scope. |
+| **Dimensions** | `gold.dim_games` | PK, Home/Away ID conflict, Attendance logic, Date range (2012+). |
+| **Dimensions** | `gold.dim_competitions` | PK, Type validation (Domestic League only), Top 14 count. |
 | **Facts** | `gold.fact_team_stats` | **Mirror Symmetry**, Points logic, Clean sheet vs Opponent goals. |
-| | `gold.fact_player_stats` | PK (Game+Player), Stat caps per game, FK Integrity. |
-| | `gold.fact_transfers` | Transfer fee ranges, Date vs Season logic, Club/Player FKs. |
-| | `gold.fact_player_valuations`| Valuation trends, Date consistency, Club assignment. |
+| **Facts** | `gold.fact_player_stats` | PK (Game+Player), Stat caps per game, FK Integrity. |
+| **Facts** | `gold.fact_transfers` | Transfer fee ranges, Date vs Season logic, Club/Player FKs. |
+| **Facts** | `gold.fact_player_valuations`| Valuation trends, Date consistency, Club assignment. |
 
 ---
 
-## Execution Guide
+## 🚀 Execution Guide
 Scripts are designed to return **Zero Results** upon success. 
 
-1. Execute the `.sql` script.
-2. Any returned records represent a **Data Quality Failure** that must be investigated and explained.
+1. **Execute** the `.sql` script
+2. **Review:** Any returned records represent a **Data Quality Failure** ❌ that must be investigated and explained.
