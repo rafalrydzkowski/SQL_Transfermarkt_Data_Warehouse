@@ -43,7 +43,7 @@ Each of the 8 core tables is subjected to a multi-layered validation approach:
 ---
 
 ## Execution Guide
-All tests are located in `/scripts/tests/`. Scripts are designed to return **Zero Results** upon success. 
+Scripts are designed to return **Zero Results** upon success. 
 
-1. Execute the `.sql` script against the `SQL_Data_Warehouse_Transfermarkt` database.
-2. Any returned records represent a **Data Quality Failure** that must be investigated in the Silver-to-Gold ETL pipeline.
+1. Execute the `.sql` script.
+2. Any returned records represent a **Data Quality Failure** that must be investigated and explained.
