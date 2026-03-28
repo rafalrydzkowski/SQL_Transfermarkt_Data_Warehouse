@@ -45,5 +45,5 @@ Each of the 8 core tables is subjected to a multi-layered validation approach:
 ## 🚀 Execution Guide
 Scripts are designed to return **Zero Results** upon success. 
 
-1. **Execute** the `.sql` script
+1. **Execute** the `.sql` script.
 2. **Review:** Any returned records represent a **Data Quality Failure** ❌ that must be investigated and explained.
