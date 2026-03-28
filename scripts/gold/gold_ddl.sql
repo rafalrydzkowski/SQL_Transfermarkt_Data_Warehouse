@@ -117,7 +117,6 @@ CREATE TABLE gold.dim_clubs (
 -- Index:
 CREATE INDEX idx_clubs__competition_id ON gold.dim_clubs (competition_id);
 
-
 --------------------------------------------------------------------
 -- Create Dimension: gold.dim_players
 --------------------------------------------------------------------
@@ -161,7 +160,6 @@ CREATE INDEX idx_players__position ON gold.dim_players (position);
 CREATE INDEX idx_players__last_season ON gold.dim_players (last_season);
 CREATE INDEX idx_players__competition_id ON gold.dim_players (current_club_domestic_competition_id);
 
-
 --------------------------------------------------------------------
 -- Create Fact Table: gold.fact_player_valuations
 --------------------------------------------------------------------
@@ -199,8 +197,6 @@ CREATE TABLE gold.fact_player_valuations (
 CREATE INDEX idx_valuations__player_id ON gold.fact_player_valuations (player_id);
 CREATE INDEX idx_valuations__date ON gold.fact_player_valuations (date_of_valuation);
 CREATE INDEX idx_valuations__club_id ON gold.fact_player_valuations (club_id_at_valuation);
-
-
 
 --------------------------------------------------------------------
 -- Create Fact Table: gold.fact_transfers
