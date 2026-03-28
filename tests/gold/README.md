@@ -1,4 +1,4 @@
-# Data Quality Framework - Gold Layer
+# 🛡️ Data Quality Framework | Gold Layer
 
 ## Overview
 This directory contains a suite of SQL validation scripts designed to ensure the integrity, consistency, and business accuracy of the **Gold Layer** within the `SQL_Data_Warehouse_Transfermarkt` project. 
