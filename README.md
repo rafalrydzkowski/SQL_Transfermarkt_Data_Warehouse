@@ -154,7 +154,7 @@ To initialize and populate the entire Data Warehouse, follow the execution order
 ## 🌟 About Me
 I am a **Data Engineering / Data Analytics enthusiast** with a focus on building scalable, high-integrity data warehouses. I specialize in transforming raw, messy datasets into actionable business intelligence using PostgreSQL and modern architectural patterns.
 
-* **Looking for:** Junior Data Engineer or Data Analyst roles.
+* **Looking for:** Junior Data Analyst roles.
 * **Tech I love:** SQL (PostgreSQL), Excel, PowerBI
 * **Fun Fact:** I chose the Transfermarkt dataset because I believe sports analytics is the ultimate test for handling temporal data and complex relational integrity.
 
