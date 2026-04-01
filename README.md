@@ -1,4 +1,4 @@
-# ⚽️ SQL_Data_Warehouse_Transfermarkt
+# ⚽️🏟️ SQL_Data_Warehouse_Transfermarkt
 
 # 1. Project Architecture
 
@@ -114,6 +114,10 @@ The entire pipeline is automated through Stored Procedures, ensuring a reliable 
 ## 4. Business & Analytical Use Cases
 
 This project is designed to answer complex sports-business questions through advanced SQL modeling. Below are the primary analytical tracks:
+
+> [!IMPORTANT]
+> **The part of the project that answers business questions and performs data analysis in SQL can be found in my separate repository, linked below:**
+[SQL_Transfermarkt_Data_Analytics - Github Repository](https://github.com/rafalrydzkowski/SQL_Transfermarkt_Data_Analytics)
 
 ### ⚽ Player Market Analysis
 * **Market Value vs. Performance:** Correlation between a player's valuation trends and their actual on-field output (goals, assists per 90 mins).
