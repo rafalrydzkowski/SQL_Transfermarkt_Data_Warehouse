@@ -162,4 +162,4 @@ I am a **Data Engineering / Data Analytics enthusiast** with a focus on building
 * **Tech I love:** SQL (PostgreSQL), Excel, PowerBI
 * **Fun Fact:** I chose the Transfermarkt dataset because I believe sports analytics is the ultimate test for handling temporal data and complex relational integrity.
 
-📫 **Let's connect:** www.linkedin.com/in/rafał-rydzkowski-319aa7252 | RafalRydzkowskiJ@gmail.com
+📫 **Let's connect:** https://www.linkedin.com/in/rafal-rydzkowski-data/ | RafalRydzkowskiJ@gmail.com
