@@ -167,7 +167,7 @@ To initialize and populate the entire Data Warehouse, follow the execution order
 I am a **Data Engineering / Data Analytics enthusiast** with a focus on building scalable, high-integrity data warehouses. I specialize in transforming raw, messy datasets into actionable business intelligence using PostgreSQL and modern architectural patterns.
 
 * **Looking for:** Junior Data Analyst roles.
-* **Tech I love:** SQL (PostgreSQL), Excel, PowerBI
+* **Tech I love:** SQL (PostgreSQL), Excel, Tableau
 * **Fun Fact:** I chose the Transfermarkt dataset because I believe sports analytics is the ultimate test for handling temporal data and complex relational integrity.
 
 📫 **Let's connect:** https://www.linkedin.com/in/rafal-rydzkowski-data/ | RafalRydzkowskiJ@gmail.com
